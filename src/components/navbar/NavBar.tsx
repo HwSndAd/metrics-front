@@ -1,6 +1,6 @@
 function NavBar() {
     return (
-        <div className='shadow-md'>
+        <div className='shadow-2xl'>
             <div className='flex items-center justify-between container mx-auto px-6 py-3 '>
                 <div className='flex items-center gap-3'>
                     <a href="">
