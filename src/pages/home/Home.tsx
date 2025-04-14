@@ -17,7 +17,7 @@ function Home() {
                     Enviar Medidas
                     <ArrowRight size={26}/>
                 </button>
-                <div className='flex flex-row font-light gap-2 text-zinc-400 py-4'>
+                <div className='flex flex-row font-light gap-2 text-zinc-400 py-2'>
                     <Ruler size={18} />
                     <h3>Todas as medidas são enviadas em cm.</h3>
                 </div>

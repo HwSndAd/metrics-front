@@ -1,3 +1,4 @@
+import { Question } from '@phosphor-icons/react'
 import React from 'react'
 
 interface InputProps {
@@ -11,9 +12,12 @@ interface InputProps {
 function Input({ name, label, value, onChange, unit }: InputProps) {
     return (
         <div className="flex flex-col space-y-1">
-            <label htmlFor={name} className="text-sm font-medium">
-                {label}
-            </label>
+            <div className='flex items-center'>
+                <label htmlFor={name} className="text-sm font-medium mr-auto">
+                    {label}
+                </label>
+                <Question size={18} className='mr-7 hover:text-zinc-600 cursor-pointer'/>
+            </div>
             <div className="flex items-center space-x-2">
                 <input
                     type="text"

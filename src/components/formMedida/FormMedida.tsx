@@ -1,5 +1,6 @@
 import Input from '../../components/input/Input'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import Mannequim from '../../assets/img/Mannequim.png'
 
 function FormMedida() {
     return (
@@ -32,7 +33,7 @@ function FormMedida() {
                                 <Tab
                                     key={tab}
                                     className={({ selected }) =>
-                                        `px-4 py-2 text-sm font-medium ${selected ? 'bg-white text-black' : 'bg-gray-100 text-gray-800'}`
+                                        `px-4 py-2 text-sm font-medium cursor-pointer ${selected ? 'bg-white text-black' : 'bg-gray-100 text-gray-800'}`
                                     }
                                 >
                                     {tab}
@@ -69,7 +70,7 @@ function FormMedida() {
 
                                 <div className="flex justify-center items-center">
                                     <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
-                                        Foto
+                                        <img src={Mannequim} alt="Mannequim" />
                                     </div>
                                 </div>
 
