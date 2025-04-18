@@ -88,7 +88,7 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
                 </div>
             </div>
 
-            <TabGroup className={`px-4`}>
+            <TabGroup className={`px-4 `}>
                 <TabList className="flex flex-col w-full md:flex-row md:w-fit gap-1 px-2 py-2 mt-4 rounded-md bg-zinc-100">
                     {abas.map((tab) => (
                         <HeadlessTab
@@ -153,6 +153,13 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
                     </TabPanel>
                 </TabPanels>
             </TabGroup>
+
+            <div className='px-6'>
+                <div className="border border-zinc-200 rounded-xl p-4 mt-4 bg-white shadow-sm">
+                    <p className="text-xl font-semibold text-zinc-900">Comentario</p>
+                    <p className=" text-zinc-900">{`${usuario.comentario ? usuario.comentario:'Sem comentario'}`}</p>
+                </div>
+            </div>
 
             <div className="flex justify-end pt-4 w-full mt-4 px-4 border-t border-zinc-300">
                 <button className="flex items-center gap-1 bg-white hover:bg-zinc-50 
