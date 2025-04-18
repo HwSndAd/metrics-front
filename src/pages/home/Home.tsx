@@ -3,6 +3,7 @@ import FormMedida from "../../components/formMedida/FormMedida";
 import { FormEvent, useState } from "react";
 import Medidas from "../../models/Medidas";
 import { cadastrar } from "../../service/service";
+import CardDuvida from "../../components/cardDuvida/CardDuvida";
 
 function Home() {
 

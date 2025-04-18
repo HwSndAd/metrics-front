@@ -6,6 +6,7 @@ import Home from './pages/home/Home'
 import { AuthProvider } from './contexts/AuthContext'
 import Login from './pages/login/Login'
 import EditarUsuario from './components/editarUsuario/EditarUsuario'
+import ExportarFicha from './util/ExportarFicha'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path='/admin' element={<Admin />} />
 
             <Route path='/editar-usuario' element={<EditarUsuario />}/>
+            <Route path='/teste' element={<ExportarFicha />}/>
           </Routes>
         </div>
       </BrowserRouter>
