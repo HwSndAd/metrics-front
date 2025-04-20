@@ -70,7 +70,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
 
             <div className='bg-gray-50 border border-zinc-300 shadow rounded-xl overflow-hidden'>
                 <TabGroup >
-                    <TabList className="flex justify-center mb-6 pt-6">
+                    <TabList className="flex flex-col md:flex-row justify-center mb-6 pt-6">
                         {['Comprimento Parte Superior', 'Diametro Parte Superior',
                             'Comprimento Parte Inferior', 'Diametro Parte Inferior'].map((tab) => (
                                 <Tab
@@ -87,7 +87,16 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                     <TabPanels className={'pb-4'}>
                         {/*Comprimento Superior*/}
                         <TabPanel>
-                            <div className="grid grid-cols-3 gap-6 bg-gray-50 p-6">
+                            <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6">
+                                {/*Tela Pequena*/}
+                                <div className='block md:hidden'>
+                                    <div className="flex justify-center items-center">
+                                        <div className="w-full max-h-auto  border rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Mannequim} alt="Mannequim" />
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div className="space-y-4">
                                     <Input
                                         label="Busto Frente"
@@ -114,9 +123,12 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     />
                                 </div>
 
-                                <div className="flex justify-center items-center">
-                                    <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
-                                        <img src={Mannequim} alt="Mannequim" />
+                                {/*Tela Media*/}
+                                <div className='hidden md:block'>
+                                    <div className="flex justify-center items-center">
+                                        <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Mannequim} alt="Mannequim" />
+                                        </div>
                                     </div>
                                 </div>
 
@@ -142,7 +154,16 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                         </TabPanel>
                         {/*Circunferencia Superior*/}
                         <TabPanel>
-                            <div className="grid grid-cols-3 gap-6 bg-gray-50 p-6">
+                            <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6">
+                                {/*Tela Pequena*/}
+                                <div className='block md:hidden'>
+                                    <div className="flex justify-center items-center">
+                                        <div className="w-full max-h-auto  border rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Mannequim} alt="Mannequim" />
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div className="space-y-4">
                                     <Input
                                         label="Circunferencia do Pescoço"
@@ -185,9 +206,12 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     />
                                 </div>
 
-                                <div className="flex justify-center items-center">
-                                    <div className="w-full min-h-80 h-full border rounded-lg flex items-center justify-center text-gray-400">
-                                        Foto
+                                {/*Tela Media*/}
+                                <div className='hidden md:block'>
+                                    <div className="flex justify-center items-center">
+                                        <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Mannequim} alt="Mannequim" />
+                                        </div>
                                     </div>
                                 </div>
 
@@ -229,7 +253,16 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                         </TabPanel>
                         {/*Comprimento Inferior*/}
                         <TabPanel>
-                            <div className="grid grid-cols-3 gap-6 bg-gray-50 p-6 ">
+                            <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6 ">
+                                {/*Tela Pequena*/}
+                                <div className='block md:hidden'>
+                                    <div className="flex justify-center items-center">
+                                        <div className="w-full max-h-auto  border rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Mannequim} alt="Mannequim" />
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div className="space-y-4">
                                     <Input
                                         label="Altura até Meio da Coxa"
@@ -248,9 +281,12 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     />
                                 </div>
 
-                                <div className="flex justify-center items-center">
-                                    <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
-                                        <img src={Mannequim} alt="Mannequim" />
+                                {/*Tela Media*/}
+                                <div className='hidden md:block'>
+                                    <div className="flex justify-center items-center">
+                                        <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Mannequim} alt="Mannequim" />
+                                        </div>
                                     </div>
                                 </div>
 
@@ -275,7 +311,16 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                         </TabPanel>
                         {/*Circunferencia Inferior*/}
                         <TabPanel>
-                            <div className="grid grid-cols-3 gap-6 bg-gray-50 p-6 ">
+                            <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6 ">
+                                {/*Tela Pequena*/}
+                                <div className='block md:hidden'>
+                                    <div className="flex justify-center items-center">
+                                        <div className="w-full max-h-auto  border rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Mannequim} alt="Mannequim" />
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div className="space-y-4">
                                     <Input
                                         label="Circunferencia Coxa"
@@ -301,9 +346,12 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     />
                                 </div>
 
-                                <div className="flex justify-center items-center">
-                                    <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
-                                        <img src={Mannequim} alt="Mannequim" />
+                                {/*Tela Media*/}
+                                <div className='hidden md:block'>
+                                    <div className="flex justify-center items-center">
+                                        <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Mannequim} alt="Mannequim" />
+                                        </div>
                                     </div>
                                 </div>
 
@@ -331,7 +379,6 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     />
                                 </div>
                             </div>
-
                         </TabPanel>
                     </TabPanels>
                 </TabGroup>
