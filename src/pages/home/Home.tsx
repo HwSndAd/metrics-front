@@ -11,8 +11,9 @@ function Home() {
         nome: '',
         manequim: '',
         escola: '',
-        dataAtual: '2025-04-04', // ou undefined
+        dataAtual: '', // ou undefined
         status: 'Recebido', // ou undefined
+        altura: 0, //adicionado
 
         compBustoFrente: 0,
         compOmbro: 0,
@@ -29,6 +30,7 @@ function Home() {
         circPescoco: 0,
         circCinturaMedia: 0,
         circCinturaBaixa: 0,
+        circQuadril: 0, //adicionado
 
         compMeioCoxa: 0,
         compJoelho: 0,
@@ -48,16 +50,15 @@ function Home() {
     
     async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
 
-        // const dataAtual = new Date().toISOString().split('T')[0]; // Formato 'yyyy-mm-dd'
-        // setDados(prevDados => ({
-        //     ...prevDados,
-        //     dataAtual,
-        // }));
+        const dataAtual = new Date().toISOString().split('T')[0]; // Formato 'yyyy-mm-dd'
+        const formDataComAtual ={
+            ...dados,
+            dataAtual,
+        }
 
         try {
-            console.log("Dados que serão enviados:", dados);
-            await cadastrar('/medidas', dados, setDados);
-            console.log('Dados enviados com sucesso:', dados);
+            console.log("Dados que serão enviados:", formDataComAtual);
+            await cadastrar('/medidas', formDataComAtual, setDados);
             alert('Dados enviados com sucesso');
 
             // Resetando o formulário

@@ -45,6 +45,16 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                         onChange={(e) => handleInputChange(e, "manequim")} // Atualiza o estado
                     />
                 </div>
+                <div>
+                    <h3 className="font-medium">Altura</h3>
+                    <input
+                        className="border bg-white font-light tracking-tighter border-gray-400 p-1 rounded-lg text-md"
+                        type="number"
+                        placeholder="1.65"
+                        value={dados.altura} // Vincula o valor do input ao estado
+                        onChange={(e) => handleInputChange(e, "altura")} // Atualiza o estado
+                    />
+                </div>
 
                 <div>
                     <h3 className="font-medium">Instituição</h3>
@@ -298,6 +308,13 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                 </div>
 
                                 <div className="space-y-4">
+                                    <Input
+                                        label="Circunferencia Quadril"
+                                        name="circQuadril"
+                                        value={dados.circQuadril} // Vinculando ao estado
+                                        unit="cm"
+                                        onChange={(e) => handleInputChange(e, "circQuadril")} // Atualizando o estado
+                                    />
                                     <Input
                                         label="Circunferencia Tornozelo"
                                         name="circTornozelo"

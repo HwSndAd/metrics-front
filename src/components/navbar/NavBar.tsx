@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 function NavBar() {
     return (
-        <div className='shadow-md'>
+        <div className='shadow-md print:hidden'>
             <div className='flex items-center justify-between container mx-auto px-6 py-3 '>
                 <Link to={'/'}>
                     <div className='flex items-center gap-3'>

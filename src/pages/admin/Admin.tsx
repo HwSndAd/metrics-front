@@ -71,7 +71,7 @@ function Admin() {
 
     return (
         <div className='container mx-auto px-6 py-3'>
-            <div className='flex flex-col justify-around md:flex-row md:justify-between'>
+            <div className='flex flex-col justify-around md:flex-row md:justify-between print:hidden'>
                 <div className='flex flex-col'>
                     <h1 className='text-3xl font-light tracking-tight mb-1'>Painel Administrativo</h1>
                     <h3 className='text-zinc-400'>Visualize e gerencie as medidas corporais dos usuários</h3>
@@ -89,7 +89,7 @@ function Admin() {
             </div>
 
             <div className='flex flex-col md:flex-row gap-4'>
-                <div className='pt-4 min-w-80'>
+                <div className='pt-4 min-w-80 print:hidden'>
                     {/* Lista filtrada de usuários */}
                     <ListUsuario
                         usuarios={medidasFiltradas}

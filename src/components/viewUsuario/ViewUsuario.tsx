@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { atualizar } from '../../service/service'; // Importe a função de atualização
+import { atualizar } from '../../service/service';
 import {
     Tab as HeadlessTab,
     TabGroup,
@@ -8,9 +8,10 @@ import {
     TabPanels
 } from "@headlessui/react";
 import CardMedida from "../cardMedida/CardMedida";
-import { DownloadSimple, NotePencil } from "@phosphor-icons/react";
+import { DownloadSimple, EyeClosed, NotePencil } from "@phosphor-icons/react";
 import Medidas from "../../models/Medidas";
 import { useNavigate } from 'react-router-dom';
+import ExportarFicha from '../../util/ExportarFicha';
 
 const abas = ['Comprimento Parte Superior', 'Diametro Parte Superior',
     'Comprimento Parte Inferior', 'Diametro Parte Inferior'];
@@ -30,10 +31,9 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
 
     const [usuarioStatus, setUsuarioStatus] = useState(usuario.status);
 
-    // UseEffect para atualizar o estado quando o usuario muda
     useEffect(() => {
         if (usuario) {
-            setUsuarioStatus(usuario.status); // Atualiza o status quando o usuário mudar
+            setUsuarioStatus(usuario.status);
         }
     }, [usuario]);
 
@@ -43,21 +43,14 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
         const novoStatus = 'Concluído';
 
         try {
-            // Atualizando o status localmente
             setUsuarioStatus(novoStatus);
 
-            // Criando um novo objeto com o status atualizado
             const usuarioAlterado = { ...usuario, status: novoStatus };
-
-            // Enviando a requisição PUT com o objeto atualizado
             await atualizar(`/medidas`, usuarioAlterado, setUsuario, { headers: { Authorization: token } });
 
-            // Atualizando o estado global com os dados atualizados do usuário
             setUsuario(usuarioAlterado);
 
-            // Recarregando a lista de usuários após a alteração do status
-            atualizarListaUsuarios(); // Função que recarrega a lista de usuários
-
+            atualizarListaUsuarios();
         } catch (error) {
             console.error('Erro ao atualizar status:', error);
         }
@@ -67,13 +60,12 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
 
     return (
         <div className="w-full max-w-5xl bg-white py-4 border border-zinc-200 rounded-lg shadow-sm">
-            <div className='flex justify-end px-4'>
-                {/*Botão de Editar*/}
+            <div className='flex justify-end px-4 print:hidden'>
                 <button onClick={() => navigate('/editar-usuario', { state: { usuario } })}>
                     <NotePencil size={16} />
                 </button>
             </div>
-            <div className="flex justify-between border-b border-zinc-300 px-4 pb-4">
+            <div className="flex justify-between border-b border-zinc-300 px-4 pb-4 print:hidden">
                 <div>
                     <h1 className="text-2xl font-semibold text-zinc-800">{usuario.nome}</h1>
                     <h1 className="text-md text-zinc-800">{usuario.escola}</h1>
@@ -81,14 +73,14 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
                 <div className='flex justify-items-end items-end'>
                     <p
                         className={`border border-zinc-700 px-1.5 font-bold text-sm py-0.5 ${bgColor} rounded-full`}
-                        onClick={handleStatusChange} // Alterar o status ao clicar
+                        onClick={handleStatusChange}
                     >
                         {usuarioStatus}
                     </p>
                 </div>
             </div>
 
-            <TabGroup className={`px-4 `}>
+            <TabGroup className={`px-4 print:hidden`}>
                 <TabList className="flex flex-col w-full md:flex-row md:w-fit gap-1 px-2 py-2 mt-4 rounded-md bg-zinc-100">
                     {abas.map((tab) => (
                         <HeadlessTab
@@ -106,7 +98,8 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
                 <TabPanels>
                     <TabPanel>
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6 px-2">
-                            <CardMedida titulo="Manequim" valor={`${usuario.manequim ?? 'N/A'}cm`} />
+                            <CardMedida titulo="Manequim" valor={`${usuario.manequim ?? 'N/A'}`} />
+                            <CardMedida titulo="Altura" valor={`${usuario.altura ?? 'N/A'}cm`} />
                             <CardMedida titulo="Busto Frente" valor={`${usuario.compBustoFrente ?? 'N/A'} cm`} />
                             <CardMedida titulo="Ombro" valor={`${usuario.compOmbro ?? 'N/A'} cm`} />
                             <CardMedida titulo="Altura Tronco" valor={`${usuario.compAlturaTronco ?? 'N/A'} cm`} />
@@ -127,7 +120,6 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
                             <CardMedida titulo="Circunferencia Cintura" valor={`${usuario.circCintura ?? 'N/A'} cm`} />
                             <CardMedida titulo="Circunferencia Cintura Média" valor={`${usuario.circCinturaBaixa ?? 'N/A'} cm`} />
                             <CardMedida titulo="Circunferencia Cintura Baixa" valor={`${usuario.circCinturaMedia ?? 'N/A'} cm`} />
-
                         </div>
                     </TabPanel>
 
@@ -142,8 +134,9 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
                     </TabPanel>
 
                     <TabPanel>
-                        {/* Parte Comprimento Inferior */}
+                        {/* Parte Circunferencia Inferior */}
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6 px-2">
+                            <CardMedida titulo="Circunferencia Quadril" valor={`${usuario.circQuadril ?? 'N/A'}cm`} />
                             <CardMedida titulo="Circunferencia Coxa" valor={`${usuario.circCoxa ?? 'N/A'}cm`} />
                             <CardMedida titulo="Circunferencia Joelho" valor={`${usuario.circJoelho ?? 'N/A'} cm`} />
                             <CardMedida titulo="Circunferencia Puntirrilha" valor={`${usuario.circPanturrilha ?? 'N/A'} cm`} />
@@ -154,18 +147,20 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
                 </TabPanels>
             </TabGroup>
 
-            <div className='px-6'>
+            <div className='px-6 print:hidden'>
                 <div className="border border-zinc-200 rounded-xl p-4 mt-4 bg-white shadow-sm">
                     <p className="text-xl font-semibold text-zinc-900">Comentario</p>
-                    <p className=" text-zinc-900">{`${usuario.comentario ? usuario.comentario:'Sem comentario'}`}</p>
+                    <p className=" text-zinc-900">{`${usuario.comentario ? usuario.comentario : 'Sem comentario'}`}</p>
                 </div>
             </div>
 
             <div className="flex justify-end pt-4 w-full mt-4 px-4 border-t border-zinc-300">
-                <button className="flex items-center gap-1 bg-white hover:bg-zinc-50 
-                    hover:scale-101 border border-zinc-300 px-3 py-1.5 rounded-md">
-                    <DownloadSimple size={18} />
-                    Exportar
+                <button onClick={() => navigate('/view', { state: { usuario } })}
+                    className="flex print:hidden items-center gap-1 bg-white hover:bg-zinc-50 hover:scale-101 
+                    border border-zinc-300 px-3 py-1.5 rounded-md"
+                >
+                    <EyeClosed size={18} />
+                    Visualizar
                 </button>
             </div>
         </div>

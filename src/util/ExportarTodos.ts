@@ -2,6 +2,7 @@ const headerMap: { [key: string]: string } = {
     nome: "Nome",
     escola: "Escola",
     manequim: "Man.",
+    altura: "Alt.", //add
 
     compBustoFrente: "Busto Fr.",
     compOmbro: "Ombro",
@@ -9,6 +10,7 @@ const headerMap: { [key: string]: string } = {
     compBraco: "Alt Braço",
     compBusto: "Alt Busto",
 
+    circQuadril: "Circ Quadril", //add
     circBusto: "Circ Busto",
     circCintura: "Circ Cint.",
     circCava: "Circ Cava",

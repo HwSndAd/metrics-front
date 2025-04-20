@@ -1,147 +1,210 @@
-import React from 'react'
-import FichaTecnica from '../assets/img/FICHATCNICA.jpg'
+import React, { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import { useLocation } from 'react-router-dom';
+import './export.css';
+import FichaTecnica from '../assets/img/FICHATCNICA.jpg';
+import Medidas from '../models/Medidas';
 
-function ExportarFicha() {
+// Componente de classe que renderiza a ficha preenchida
+class ComponentToPrint extends React.Component<{ usuario: Medidas }> {
+    render() {
+        const { usuario } = this.props;
+        if (!usuario) return <p className='text-2xl text-center font-bold'>Usuário não encontrado</p>;
+
+        return (
+            <div className="relative w-[794px] h-[1123px] mx-auto bg-white">
+                <img
+                    src={FichaTecnica}
+                    alt="Ficha Técnica"
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+
+                {/* Exibe cada campo com value vindo de usuario */}
+                <input
+                    type="text"
+                    value={usuario.nome}
+                    readOnly
+                    className="absolute top-[25px] left-[120px] w-[300px] px-2 py-1 text-sm"
+                />
+                <input
+                    type="text"
+                    value={usuario.escola}
+                    readOnly
+                    className="absolute border-b border-dashed top-[55px] left-[330px] w-[335px] text-sm"
+                />
+                <input
+                    type="text"
+                    value={usuario.altura}
+                    readOnly
+                    className="absolute top-[55px] left-[130px] w-[150px] px-2 py-1 text-sm"
+                />
+                <input
+                    type="text"
+                    value={usuario.manequim ?? ''}
+                    readOnly
+                    className="absolute top-[80px] left-[160px] w-[150px] px-2 py-1 text-sm"
+                />
+                <input
+                    type="text"
+                    value={usuario.compBustoFrente ?? ''}
+                    readOnly
+                    className="absolute top-[140px] left-[250px] w-[120px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.compBusto ?? ''}
+                    readOnly
+                    className="absolute top-[125px] left-[460px] w-[120px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.compOmbro ?? ''}
+                    readOnly
+                    className="absolute top-[207px] left-[520px] w-[120px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.circCava ?? ''}
+                    readOnly
+                    className="absolute top-[260px] left-[550px] w-[120px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.compBraco ?? ''}
+                    readOnly
+                    className="absolute top-[320px] left-[535px] w-[120px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.circPunhoAbertura ?? ''}
+                    readOnly
+                    className="absolute top-[415px] left-[500px] w-[130px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.circPunhoFechado ?? ''}
+                    readOnly
+                    className="absolute top-[500px] left-[520px] w-[130px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.circQuadril ?? ''}
+                    readOnly
+                    className="absolute top-[490px] left-[170px] w-[130px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.circCintura ?? ''}
+                    readOnly
+                    className="absolute top-[400px] left-[150px] w-[130px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.compAlturaTronco ?? ''}
+                    readOnly
+                    className="absolute top-[225px] left-[170px] w-[130px] px-2 py-1"
+                />
+
+                {/* Pernas */}
+                <input
+                    type="text"
+                    value={usuario.compMeioCoxa ?? ''}
+                    readOnly
+                    className="absolute top-[710px] left-[80px] w-[130px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.compJoelho ?? ''}
+                    readOnly
+                    className="absolute top-[780px] left-[70px] w-[130px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.compPanturrilha ?? ''}
+                    readOnly
+                    className="absolute top-[870px] left-[70px] w-[130px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.compTotalPerna ?? ''}
+                    readOnly
+                    className="absolute top-[990px] left-[290px] w-[130px] px-2 py-1"
+                />
+
+                {/* Pernas Circunferencia*/}
+                <input
+                    type="text"
+                    value={usuario.circCoxa ?? ''}
+                    readOnly
+                    className="absolute bottom-[480px] right-[-10px] w-[130px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.circJoelho ?? ''}
+                    readOnly
+                    className="absolute bottom-[365px] right-[2px] w-[130px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.circPanturrilha ?? ''}
+                    readOnly
+                    className="absolute bottom-[255px] right-[2px] w-[130px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.circTornozelo ?? ''}
+                    readOnly
+                    className="absolute bottom-[150px] right-[2px] w-[130px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.gancho ?? ''}
+                    readOnly
+                    className="absolute bottom-[75px] right-[2px] w-[130px] px-2 py-1"
+                />
+
+                <p
+                    className="absolute bottom-[40px] right-[7px] w-[780px] px-2 py-1">
+                    Comentario</p>
+                <input
+                    type="text"
+                    value={usuario.comentario ?? ''}
+                    readOnly
+                    className="absolute border bottom-[7px] right-[7px] w-[780px] px-2 py-1"
+                />
+            </div>
+        );
+    }
+}
+
+export default function ExportarFicha() {
+    const location = useLocation();
+    const state = location.state as { usuario?: Medidas } | undefined;
+    const usuario = state?.usuario;
+
+    if (!usuario) {
+        return <p className='text-2xl text-center font-bold pt-6'>Nenhum usuário selecionado <br /> para  Visualização.</p>;
+    }
+
+    const componentRef = useRef<HTMLDivElement>(null);
+    const handlePrint = useReactToPrint({
+        contentRef: componentRef,
+        documentTitle: 'Ficha Técnica',
+    });
+
     return (
-        <div className="relative w-[850px] mx-auto border shadow-xl">
-            {/* Imagem como base */}
-            <img src={FichaTecnica} alt="Ficha Técnica" className="w-full" />
+        <div className='flex flex-col px-6'>
+            <button
+                onClick={() => handlePrint()}
+                className="print:hidden border py-1 px-6 mr-8 mt-4 items-end ml-auto
+                    rounded-md text-white font-medium bg-zinc-900 hover:scale-101"
+            >
+                Imprimir
+            </button>
 
-            {/* Inputs posicionados */}
-            <input
-                type="text"
-                placeholder="Nome"
-                className="absolute top-[25px] left-[120px] w-[300px] px-2 py-1 text-sm "
-            />
-            <input
-                type="text"
-                placeholder="Altura"
-                className="absolute top-[60px] left-[130px] w-[150px] px-2 py-1 text-sm"
-            />
-            <input
-                type="text"
-                placeholder="Manequim"
-                className="absolute top-[90px] left-[160px] w-[150px] px-2 py-1 text-sm"
-            />
-
-            <input
-                type="text"
-                placeholder="Busto"
-                className="absolute top-[150px] left-[250px] w-[120px] px-2 py-1"
-            />
-            <input
-                type="text"
-                placeholder="Altura Busto"
-                className="absolute top-[130px] left-[490px] w-[120px] px-2 py-1 "
-            />
-
-            <input
-                type="text"
-                placeholder="Ombro"
-                className="absolute top-[217px] left-[540px] w-[120px] px-2 py-1 "
-            />
-
-            <input
-                type="text"
-                placeholder="Circ.Cava"
-                className="absolute top-[275px] left-[570px] w-[120px] px-2 py-1 "
-            />
-
-            <input
-                type="text"
-                placeholder="Largura Braço"
-                className="absolute top-[340px] left-[560px] w-[120px] px-2 py-1 "
-            />
-
-            <input
-                type="text"
-                placeholder="Punho Abertura"
-                className="absolute top-[435px] left-[540px] w-[130px] px-2 py-1 "
-            />
-
-            <input
-                type="text"
-                placeholder="Punho s/ Abertura"
-                className="absolute top-[535px] left-[540px] w-[130px] px-2 py-1 "
-            />
-
-            <input
-                type="text"
-                placeholder="Quadril"
-                className="absolute top-[530px] left-[170px] w-[130px] px-2 py-1 "
-            />
-            <input
-                type="text"
-                placeholder="Cintura"
-                className="absolute top-[425px] left-[150px] w-[130px] px-2 py-1 "
-            />
-            <input
-                type="text"
-                placeholder="Comp.Braco"
-                className="absolute top-[340px] left-[140px] w-[130px] px-2 py-1 "
-            />
-            <input
-                type="text"
-                placeholder="Altura Corpo"
-                className="absolute top-[240px] left-[170px] w-[130px] px-2 py-1 "
-            />
-
-            {/*Altura Pernas*/}
-            <input
-                type="text"
-                placeholder="AltMeioCoxa"
-                className="absolute top-[760px] left-[80px] w-[130px] px-2 py-1 "
-            />
-            <input
-                type="text"
-                placeholder="AltMeioJoelho"
-                className="absolute top-[830px] left-[70px] w-[130px] px-2 py-1 "
-            />
-
-            <input
-                type="text"
-                placeholder="AltMeioPantu"
-                className="absolute top-[930px] left-[70px] w-[130px] px-2 py-1 "
-            />
-
-            <input
-                type="text"
-                placeholder="AltoTotalPerna"
-                className="absolute top-[1055px] left-[310px] w-[130px] px-2 py-1 "
-            />
-
-            {/*Circunferencias Pernas */}
-
-            <input
-                type="text"
-                placeholder="CircCanela"
-                className="absolute top-[1005px] left-[660px] w-[130px] px-2 py-1 "
-            />
-            <input
-                type="text"
-                placeholder="CircPanturrilha"
-                className="absolute top-[895px] left-[665px] w-[130px] px-2 py-1 "
-            />
-            <input
-                type="text"
-                placeholder="CircJoelho"
-                className="absolute top-[775px] left-[675px] w-[130px] px-2 py-1 "
-            />
-            <input
-                type="text"
-                placeholder="CircJoelho"
-                className="absolute top-[655px] left-[690px] w-[130px] px-2 py-1 "
-            />
-            {/* Gancho */}
-            <input
-                type="text"
-                placeholder="Gancho"
-                className="absolute bottom-[80px] right-[50px] w-[120px] px-2 py-1"
-            />
-
-            {/* Adicione mais campos conforme necessário */}
+            <div ref={componentRef}>
+                <ComponentToPrint usuario={usuario} />
+            </div>
         </div>
     );
 }
-
-export default ExportarFicha

@@ -1,11 +1,14 @@
 export default interface Medidas {
     id?: number;
+    dataAtual?: string; // ou undefined
+    token?: string; // importante para passar no header
     nome: string;
-    escola: string;
+    altura: number; //Adicionado
     status: string;
+
+    escola: string;
     manequim?: string;
     compBustoFrente?: number;
-    dataAtual?: string; // ou undefined
     compOmbro?: number;
     compAlturaTronco?: number;
     compBraco?: number;
@@ -19,6 +22,7 @@ export default interface Medidas {
     circPescoco?: number;
     circCinturaMedia?: number;
     circCinturaBaixa?: number;
+    circQuadril?: number; //Adicionado
     compMeioCoxa?: number;
     compJoelho?: number;
     compPanturrilha?: number;
@@ -29,5 +33,4 @@ export default interface Medidas {
     circTornozelo?: number;
     gancho?: number;
     comentario?: string;
-    token?: string; // importante para passar no header
 }

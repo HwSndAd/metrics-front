@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Medidas from '../../models/Medidas';
-import CardInputMedida from '../cardMedida/cardInputMedida';
+import CardInputMedida from '../cardMedida/CardInputMedida';
 import { ArrowRight } from '@phosphor-icons/react';
 import { atualizar } from '../../service/service';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -18,6 +18,7 @@ function EditarUsuario() {
         nome: usuario?.nome ?? '',
         escola: usuario?.escola ?? '',
         manequim: usuario?.manequim ?? '',
+        altura: usuario?.altura ?? '', //add
         compBustoFrente: usuario?.compBustoFrente ?? 0,
         compOmbro: usuario?.compOmbro ?? 0,
         compAlturaTronco: usuario?.compAlturaTronco ?? 0,
@@ -34,13 +35,14 @@ function EditarUsuario() {
         compJoelho: usuario?.compJoelho ?? 0,
         compPanturrilha: usuario?.compPanturrilha ?? 0,
         compTotalPerna: usuario?.compTotalPerna ?? 0,
+        circQuadril: usuario?.circQuadril ?? '', //add
         circCoxa: usuario?.circCoxa ?? 0,
         circJoelho: usuario?.circJoelho ?? 0,
         circPanturrilha: usuario?.circPanturrilha ?? 0,
         circTornozelo: usuario?.circTornozelo ?? 0,
         gancho: usuario?.gancho ?? 0,
         comentario: usuario?.comentario ?? '',
-        dataAtual: usuario?.dataAtual ?? '2025-04-04', // A data padrão ou undefined
+        dataAtual: usuario?.dataAtual ?? 'N/A', // A data padrão ou undefined
         status: usuario?.status ?? 'Recebido', // A status padrão ou undefined
     });
 
@@ -53,11 +55,16 @@ function EditarUsuario() {
     }, [token, navigate]);  // Verifique sempre a mudança do token
 
     async function handleSubmit() {
-        try {
-            console.log("Dados que serão enviados:", form);
-            console.log("Token:", token);  // Verifique se o token está sendo passado corretamente
 
-            await atualizar(`/medidas`, form, setForm, {
+        const dataAtual = new Date().toISOString().split('T')[0]; // Formato 'yyyy-mm-dd'
+
+        const formData ={
+            ...form,
+            dataAtual,
+        };
+
+        try {
+            await atualizar(`/medidas`, formData, setForm, {
                 headers: {
                     Authorization: token,  // Agora usa o token do contexto
                 },
@@ -102,7 +109,20 @@ function EditarUsuario() {
                     <div>
                         <h2 className="text-xl font-semibold mb-2">Medidas Superiores</h2>
                         <div className="grid gap-4 grid-cols-2 items-center md:grid-cols-6">
-                            <CardInputMedida titulo="Manequim" valor={form.manequim} onChange={val => setForm({ ...form, manequim: val })} />
+
+                            <div className="flex flex-col text-center h-24 justify-center items-center border border-zinc-200 
+                                rounded-xl p-4 bg-white shadow-sm ">
+                                <p className="text-sm text-zinc-500">Manequim</p>
+                                <input
+                                    type="text"
+                                    value={form.manequim}
+                                    onChange={(e) => setForm({ ...form, escola: e.target.value })}
+                                    className="text-center text-2xl items-center font-semibold text-zinc-900 w-full bg-transparent outline-none"
+                                />
+                            </div>
+
+                            {/* <CardInputMedida titulo="Manequim" valor={form.manequim} onChange={val => setForm({ ...form, manequim: val })} /> */}
+                            <CardInputMedida titulo="Altura" valor={form.altura} onChange={val => setForm({ ...form, altura: parseInput(val) })} />
                             <CardInputMedida titulo="Busto Frente" valor={form.compBustoFrente} onChange={val => setForm({ ...form, compBustoFrente: parseInput(val) })} />
                             <CardInputMedida titulo="Ombro" valor={form.compOmbro} onChange={val => setForm({ ...form, compOmbro: parseInput(val) })} />
                             <CardInputMedida titulo="Altura Tronco" valor={form.compAlturaTronco} onChange={val => setForm({ ...form, compAlturaTronco: parseInput(val) })} />
@@ -125,6 +145,7 @@ function EditarUsuario() {
                             <CardInputMedida titulo="Comprimento até Joelho" valor={form.compJoelho} onChange={val => setForm({ ...form, compJoelho: parseInput(val) })} />
                             <CardInputMedida titulo="Comprimento até Panturrilha" valor={form.compPanturrilha} onChange={val => setForm({ ...form, compPanturrilha: parseInput(val) })} />
                             <CardInputMedida titulo="Comprimento Perna" valor={form.compTotalPerna} onChange={val => setForm({ ...form, compTotalPerna: parseInput(val) })} />
+                            <CardInputMedida titulo="Circunferência Quadril" valor={form.circQuadril} onChange={val => setForm({ ...form, circQuadril: parseInput(val) })} />
                             <CardInputMedida titulo="Circunferência Coxa" valor={form.circCoxa} onChange={val => setForm({ ...form, circCoxa: parseInput(val) })} />
                             <CardInputMedida titulo="Circunferência Joelho" valor={form.circJoelho} onChange={val => setForm({ ...form, circJoelho: parseInput(val) })} />
                             <CardInputMedida titulo="Circunferência Panturrilha" valor={form.circPanturrilha} onChange={val => setForm({ ...form, circPanturrilha: parseInput(val) })} />

@@ -22,7 +22,7 @@ function App() {
             <Route path='/admin' element={<Admin />} />
 
             <Route path='/editar-usuario' element={<EditarUsuario />}/>
-            <Route path='/teste' element={<ExportarFicha />}/>
+            <Route path='/view' element={<ExportarFicha />}/>
           </Routes>
         </div>
       </BrowserRouter>
