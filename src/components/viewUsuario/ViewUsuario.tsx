@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { atualizar } from '../../service/service';
 import {
     Tab as HeadlessTab,
@@ -12,6 +12,7 @@ import { DownloadSimple, EyeClosed, NotePencil } from "@phosphor-icons/react";
 import Medidas from "../../models/Medidas";
 import { useNavigate } from 'react-router-dom';
 import ExportarFicha from '../../util/ExportarFicha';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const abas = ['Comprimento Parte Superior', 'Diametro Parte Superior',
     'Comprimento Parte Inferior', 'Diametro Parte Inferior'];
@@ -26,8 +27,8 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
     if (!usuario) {
         return <div className="bg-white p-4 rounded shadow">Selecione um usuário para visualizar os dados.</div>;
     }
-
-    const token = usuario.token;
+    const { usuario: authUsuario } = useContext(AuthContext);      // <-- puxa usuário autenticado
+    const token = authUsuario?.token; 
 
     const [usuarioStatus, setUsuarioStatus] = useState(usuario.status);
 
