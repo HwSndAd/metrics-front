@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import Medidas from "../../models/Medidas";
 import { cadastrar } from "../../service/service";
 import CardDuvida from "../../components/cardDuvida/CardDuvida";
+import { ToastAlert } from "../../util/ToastAlert";
 
 function Home() {
 
@@ -57,15 +58,14 @@ function Home() {
         }
 
         try {
-            console.log("Dados que serão enviados:", formDataComAtual);
             await cadastrar('/medidas', formDataComAtual, setDados);
-            alert('Dados enviados com sucesso');
+            ToastAlert('Dados enviados com sucesso','sucesso');
 
             // Resetando o formulário
             setDados(estadoInicial);
         } catch (error) {
             console.error('Erro:', error);
-            alert('Erro ao enviar os dados');
+            ToastAlert('Erro ao Enviar Dados','erro');
         }
     }
 

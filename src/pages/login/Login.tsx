@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import UsuarioLogin from '../../models/UsuarioLogin';
+import Icon from '../../assets/img/IconLogo2.png'
 
 function Login() {
     const navigate = useNavigate();
@@ -30,7 +31,10 @@ function Login() {
     return (
         <div className="min-h-screen w-full flex items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-black to-zinc-800 animate-gradient">
             <div className="bg-black/70 backdrop-blur-md rounded-xl shadow-xl p-8 w-[95vw] sm:w-[400px] flex flex-col items-center gap-4">
-                <h2 className="text-white text-4xl font-bold">Entrar</h2>
+                <div className="w-24 h-24 flex items-center justify-center overflow-hidden rounded-full">
+                    <img src={Icon} alt="Logo" className="object-contain w-full h-full" />
+                </div>
+                <h2 className="text-white text-3xl font-semibold">Entrar</h2>
 
                 <form onSubmit={login} className="w-full flex flex-col gap-4">
                     <div className="flex flex-col">

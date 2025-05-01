@@ -8,6 +8,7 @@ import { buscar } from '../../service/service'
 import { useNavigate } from 'react-router-dom'
 
 import { generatePrintHTML } from '../../util/ExportarTodos'
+import { ToastAlert } from '../../util/ToastAlert'
 
 function Admin() {
     const navigate = useNavigate();
@@ -56,7 +57,7 @@ function Admin() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado!');
+            ToastAlert("Você Precisa estar Logado", 'info')
             navigate('/login');
         }
     }, [token]);

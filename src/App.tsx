@@ -7,12 +7,15 @@ import { AuthProvider } from './contexts/AuthContext'
 import Login from './pages/login/Login'
 import EditarUsuario from './components/editarUsuario/EditarUsuario'
 import ExportarFicha from './util/ExportarFicha'
+import Footer from './components/footer/Footer'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   return (
     <>
     <AuthProvider>
       <BrowserRouter>
+      <ToastContainer />
       {location.pathname !== '/login' && <NavBar />} 
         <div className='min-h-[80vh] bg-gray-100'>
           <Routes>
@@ -25,6 +28,7 @@ function App() {
             <Route path='/view' element={<ExportarFicha />}/>
           </Routes>
         </div>
+        <Footer />
       </BrowserRouter>
     </AuthProvider>
     </>

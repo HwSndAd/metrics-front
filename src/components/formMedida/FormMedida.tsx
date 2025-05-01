@@ -5,6 +5,10 @@ import { CaretDown } from '@phosphor-icons/react'
 import { useState } from 'react';
 import Medidas from '../../models/Medidas';
 
+import Superior from '../../assets/img/Superior.png'
+import InferiorComp from '../../assets/img/Inferior_Comprimento.png'
+import InferiorCirc from '../../assets/img/Inferior_Circ.png'
+
 interface FormMedidasProps {
     dados: Medidas;
     setDados: React.Dispatch<React.SetStateAction<Medidas>>;
@@ -91,8 +95,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                 {/*Tela Pequena*/}
                                 <div className='block md:hidden'>
                                     <div className="flex justify-center items-center">
-                                        <div className="w-full max-h-auto  border rounded-lg flex items-center justify-center text-gray-400">
-                                            <img src={Mannequim} alt="Mannequim" />
+                                        <div className="w-full max-h-auto overflow-hidden border rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Superior} alt="Mannequim" />
                                         </div>
                                     </div>
                                 </div>
@@ -104,6 +108,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.compBustoFrente} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compBustoFrente")} // Atualizando o estado
+                                        instrucao='Meça em linha reta da lateral de uma axila até a lateral da outra, passando pelo centro do busto (peito).'
                                     />
 
                                     <Input
@@ -112,6 +117,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.compOmbro} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compOmbro")} // Atualizando o estado
+                                        instrucao='Meça da base do pescoço até a ponta do ombro (onde o braço começa).'
                                     />
 
                                     <Input
@@ -120,14 +126,15 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.compAlturaTronco} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compAlturaTronco")} // Atualizando o estado
+                                        instrucao='Meça do ombro (ponto mais alto) até a linha da cintura, passando pelo meio do peito.'
                                     />
                                 </div>
 
                                 {/*Tela Media*/}
                                 <div className='hidden md:block'>
                                     <div className="flex justify-center items-center">
-                                        <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
-                                            <img src={Mannequim} alt="Mannequim" />
+                                        <div className="w-full min-h-80 border overflow-hidden rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Superior} alt="Mannequim" />
                                         </div>
                                     </div>
                                 </div>
@@ -139,6 +146,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.compBusto} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compBusto")} // Atualizando o estado
+                                        instrucao='Meça do ombro (ponto mais alto) até a parte mais saliente do busto (geralmente o mamilo).'
                                     />
 
                                     <Input
@@ -147,6 +155,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.compBraco} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compBraco")} // Atualizando o estado
+                                        instrucao='Meça do ombro até o osso do pulso, com o braço levemente dobrado.'
                                     />
                                 </div>
                             </div>
@@ -158,8 +167,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                 {/*Tela Pequena*/}
                                 <div className='block md:hidden'>
                                     <div className="flex justify-center items-center">
-                                        <div className="w-full max-h-auto  border rounded-lg flex items-center justify-center text-gray-400">
-                                            <img src={Mannequim} alt="Mannequim" />
+                                        <div className="w-full max-h-auto overflow-hidden border rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Superior} alt="Mannequim" />
                                         </div>
                                     </div>
                                 </div>
@@ -171,6 +180,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circPescoco} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circPescoco")} // Atualizando o estado
+                                        instrucao='Meça ao redor da base do pescoço, onde se encaixa a gola da camisa. 
+                                        A fita deve ficar justa, mas confortável, sem afundar na pele.'
                                     />
 
                                     <Input
@@ -179,6 +190,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circBusto} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circBusto")} // Atualizando o estado
+                                        instrucao='Meça ao redor da parte mais cheia do busto/peito, passando a fita 
+                                        pelas costas (linha do sutiã ou mamilo), mantendo-a reta e nivelada.'
                                     />
 
                                     <Input
@@ -187,6 +200,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circCintura} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circCintura")} // Atualizando o estado
+                                        instrucao='Meça ao redor da menor parte da cintura, geralmente 2 a 3 cm acima do umbigo. 
+                                        A fita deve estar ajustada, mas não apertada.'
                                     />
 
                                     <Input
@@ -195,6 +210,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circCava} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circCava")} // Atualizando o estado
+                                        instrucao='Com o braço ligeiramente levantado, meça ao redor da articulação do ombro, 
+                                        contornando a axila, como se a fita fosse a borda de uma manga.'
                                     />
 
                                     <Input
@@ -203,14 +220,16 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circBiceps} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circBiceps")} // Atualizando o estado
+                                        instrucao='Com o braço relaxado ao lado do corpo (ou levemente flexionado, se preferir), 
+                                        meça ao redor da parte mais larga do braço superior, entre ombro e cotovelo.'
                                     />
                                 </div>
 
                                 {/*Tela Media*/}
                                 <div className='hidden md:block'>
                                     <div className="flex justify-center items-center">
-                                        <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
-                                            <img src={Mannequim} alt="Mannequim" />
+                                        <div className="w-full min-h-80 border rounded-lg overflow-hidden flex items-center justify-center text-gray-400">
+                                            <img src={Superior} alt="Mannequim" />
                                         </div>
                                     </div>
                                 </div>
@@ -222,6 +241,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circPunhoFechado} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circPunhoFechado")} // Atualizando o estado
+                                        instrucao='Com a mão fechada, meça ao redor da base do punho (acima da mão), 
+                                        incluindo a mão levemente para simular a passagem da manga por ela.'
                                     />
 
                                     <Input
@@ -230,6 +251,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circPunhoAbertura} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circPunhoAbertura")} // Atualizando o estado
+                                        instrucao='Com a mão relaxada e aberta, meça apenas ao redor do osso do punho. 
+                                        Essa medida é usada para ajustes justos, como punhos de camisas.'
                                     />
 
                                     <Input
@@ -238,6 +261,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circCinturaMedia} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circCinturaMedia")} // Atualizando o estado
+                                        instrucao='Meça ao redor da linha do umbigo, normalmente 2–3 cm abaixo da cintura natural. 
+                                        Útil para peças de cintura média (como jeans ou bermudas).'
                                     />
 
                                     <Input
@@ -246,6 +271,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circCinturaBaixa} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circCinturaBaixa")} // Atualizando o estado
+                                        instrucao='Meça cerca de 7 a 10 cm abaixo da cintura natural, onde normalmente se apoia uma 
+                                        calça de cintura baixa, passando pela parte mais saliente do quadril.'
                                     />
                                 </div>
                             </div>
@@ -257,8 +284,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                 {/*Tela Pequena*/}
                                 <div className='block md:hidden'>
                                     <div className="flex justify-center items-center">
-                                        <div className="w-full max-h-auto  border rounded-lg flex items-center justify-center text-gray-400">
-                                            <img src={Mannequim} alt="Mannequim" />
+                                        <div className="w-full max-h-auto  border rounded-lg overflow-hidden flex items-center justify-center text-gray-400">
+                                            <img src={InferiorComp} alt="Mannequim" />
                                         </div>
                                     </div>
                                 </div>
@@ -270,6 +297,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.compMeioCoxa} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compMeioCoxa")} // Atualizando o estado
+                                        instrucao='Meça do ponto mais alto do quadril (cintura natural) até o meio da coxa, 
+                                        aproximadamente onde a mão repousa quando você está em pé com o braço estendido ao lado do corpo.'
                                     />
 
                                     <Input
@@ -278,14 +307,15 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.compJoelho} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compJoelho")} // Atualizando o estado
+                                        instrucao='Meça da cintura natural até o centro da patela (joelho), mantendo a fita reta ao longo da lateral da perna.'
                                     />
                                 </div>
 
                                 {/*Tela Media*/}
                                 <div className='hidden md:block'>
                                     <div className="flex justify-center items-center">
-                                        <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
-                                            <img src={Mannequim} alt="Mannequim" />
+                                        <div className="w-full min-h-80 border rounded-lg overflow-hidden flex items-center justify-center text-gray-400">
+                                            <img src={InferiorComp} alt="Mannequim" />
                                         </div>
                                     </div>
                                 </div>
@@ -297,6 +327,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.compPanturrilha} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compPanturrilha")} // Atualizando o estado
+                                        instrucao='Meça da cintura natural até a parte mais larga da panturrilha, que fica entre o 
+                                        joelho e o tornozelo. A fita deve seguir a lateral externa da perna'
                                     />
                                     <Input
                                         label="Altura Total Perna"
@@ -304,6 +336,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.compTotalPerna} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compTotalPerna")} // Atualizando o estado
+                                        instrucao='Meça da cintura natural até o chão, passando pela lateral externa da perna, com 
+                                        você em pé e descalço. Essa é a medida usada para calças compridas.'
                                     />
                                 </div>
                             </div>
@@ -315,8 +349,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                 {/*Tela Pequena*/}
                                 <div className='block md:hidden'>
                                     <div className="flex justify-center items-center">
-                                        <div className="w-full max-h-auto  border rounded-lg flex items-center justify-center text-gray-400">
-                                            <img src={Mannequim} alt="Mannequim" />
+                                        <div className="w-full max-h-auto  border rounded-lg overflow-hidden flex items-center justify-center text-gray-400">
+                                            <img src={InferiorCirc} alt="Mannequim" />
                                         </div>
                                     </div>
                                 </div>
@@ -328,6 +362,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circCoxa} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circCoxa")} // Atualizando o estado
+                                        instrucao='Meça ao redor da parte mais larga da coxa, geralmente 3 a 5 cm abaixo da virilha. 
+                                        Mantenha a fita nivelada e confortável ao redor da perna.'
                                     />
 
                                     <Input
@@ -336,6 +372,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circJoelho} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circJoelho")} // Atualizando o estado
+                                        instrucao='Meça ao redor da articulação do joelho, com a perna levemente dobrada (15° a 20°). 
+                                        A fita deve passar pelo centro da patela.'
                                     />
                                     <Input
                                         label="Circunferencia Panturrilha"
@@ -343,14 +381,16 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circPanturrilha} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circPanturrilha")} // Atualizando o estado
+                                        instrucao='Meça a parte mais larga da panturrilha, geralmente localizada entre 10 a 15 cm abaixo do joelho. 
+                                        A fita deve estar nivelada e ajustada, sem apertar.'
                                     />
                                 </div>
 
                                 {/*Tela Media*/}
                                 <div className='hidden md:block'>
                                     <div className="flex justify-center items-center">
-                                        <div className="w-full min-h-80 border rounded-lg flex items-center justify-center text-gray-400">
-                                            <img src={Mannequim} alt="Mannequim" />
+                                        <div className="w-full min-h-80 border overflow-hidden rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={InferiorCirc} alt="Mannequim" />
                                         </div>
                                     </div>
                                 </div>
@@ -362,6 +402,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circQuadril} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circQuadril")} // Atualizando o estado
+                                        instrucao='Meça ao redor da parte mais saliente do bumbum, geralmente 18 a 22 cm abaixo da cintura natural. 
+                                        Mantenha a fita paralela ao chão.'
                                     />
                                     <Input
                                         label="Circunferencia Tornozelo"
@@ -369,6 +411,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.circTornozelo} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circTornozelo")} // Atualizando o estado
+                                        instrucao='Meça ao redor da base da perna, logo acima do osso do tornozelo.'
                                     />
                                     <Input
                                         label="Gancho"
@@ -376,6 +419,8 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                         value={dados.gancho} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "gancho")} // Atualizando o estado
+                                        instrucao='Sente-se em uma cadeira reta e firme. Meça do ponto da cintura natural (na frente), 
+                                        passando entre as pernas, até o mesmo ponto da cintura nas costas.'
                                     />
                                 </div>
                             </div>

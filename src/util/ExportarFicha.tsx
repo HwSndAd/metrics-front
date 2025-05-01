@@ -70,9 +70,15 @@ class ComponentToPrint extends React.Component<{ usuario: Medidas }> {
                 />
                 <input
                     type="text"
-                    value={usuario.compBraco ?? ''}
+                    value={usuario.circBiceps ?? ''} 
                     readOnly
                     className="absolute top-[320px] left-[535px] w-[120px] px-2 py-1"
+                />
+                <input
+                    type="text"
+                    value={usuario.compBraco ?? ''}
+                    readOnly
+                    className="absolute top-[320px] left-[155px] w-[120px] px-2 py-1"
                 />
                 <input
                     type="text"
