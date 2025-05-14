@@ -82,13 +82,13 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
             </div>
 
             <TabGroup className={`px-4 print:hidden`}>
-                <TabList className="flex flex-col w-full md:flex-row md:w-fit gap-1 px-2 py-2 mt-4 rounded-md bg-zinc-100">
+                <TabList className="flex flex-col w-full md:flex-row md:w-fit gap-1 px-2 py-2 mt-4 rounded-md bg-neutral-900">
                     {abas.map((tab) => (
                         <HeadlessTab
                             key={tab}
                             className={({ selected }) =>
                                 `px-4 py-2 text-sm font-medium rounded-md transition
-                                ${selected ? 'bg-white text-black shadow-sm' : 'text-gray-600'}`
+                                ${selected ? 'bg-white text-black shadow-sm' : 'text-white'}`
                             }
                         >
                             {tab}

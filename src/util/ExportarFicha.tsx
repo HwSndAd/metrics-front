@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import './export.css';
 import FichaTecnica from '../assets/img/FICHATCNICA.jpg';
 import Medidas from '../models/Medidas';
+import { Printer } from '@phosphor-icons/react';
 
 // Componente de classe que renderiza a ficha preenchida
 class ComponentToPrint extends React.Component<{ usuario: Medidas }> {
@@ -202,13 +203,12 @@ export default function ExportarFicha() {
         <div className='flex flex-col px-6'>
             <button
                 onClick={() => handlePrint()}
-                className="print:hidden border py-1 px-6 mr-8 mt-4 items-end ml-auto
-                    rounded-md text-white font-medium bg-zinc-900 hover:scale-101"
+                className="print:hidden  py-1 px-6 mr-8 mt-4 items-end ml-auto font-medium hover:scale-101"
             >
-                Imprimir
+                <Printer size={32} />
             </button>
 
-            <div ref={componentRef}>
+            <div className='pb-6' ref={componentRef}>
                 <ComponentToPrint usuario={usuario} />
             </div>
         </div>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Medidas from '../../models/Medidas';
 import CardInputMedida from '../cardMedida/CardInputMedida';
-import { ArrowRight } from '@phosphor-icons/react';
+import { ArrowRight, X } from '@phosphor-icons/react';
 import { atualizar } from '../../service/service';
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -58,7 +58,7 @@ function EditarUsuario() {
 
         const dataAtual = new Date().toISOString().split('T')[0]; // Formato 'yyyy-mm-dd'
 
-        const formData ={
+        const formData = {
             ...form,
             dataAtual,
         };
@@ -88,6 +88,13 @@ function EditarUsuario() {
         <div className="space-y-6 p-6">
             <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
                 <div className='bg-white px-6 border border-zinc-200 rounded-xl pb-6'>
+                    <div className='flex justify-end items-center pt-2'>
+                        <Link to={'/admin'}>
+                            <button className='text-red-600'>
+                                <X size={18} />
+                            </button>
+                        </Link>
+                    </div>
                     <div className="py-4 mb-4 rounded-xl">
                         <h2 className="text-lg font-semibold mb-2">Nome</h2>
                         <input
@@ -116,7 +123,7 @@ function EditarUsuario() {
                                 <input
                                     type="text"
                                     value={form.manequim}
-                                    onChange={(e) => setForm({ ...form, escola: e.target.value })}
+                                    onChange={(e) => setForm({ ...form, manequim: e.target.value })}
                                     className="text-center text-2xl items-center font-semibold text-zinc-900 w-full bg-transparent outline-none"
                                 />
                             </div>

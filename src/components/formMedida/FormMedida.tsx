@@ -9,6 +9,9 @@ import Superior from '../../assets/img/Superior.png'
 import InferiorComp from '../../assets/img/Inferior_Comprimento.png'
 import InferiorCirc from '../../assets/img/Inferior_Circ.png'
 
+const abas = ['Comprimento Parte Superior', 'Diametro Parte Superior',
+    'Comprimento Parte Inferior', 'Diametro Parte Inferior'];
+
 interface FormMedidasProps {
     dados: Medidas;
     setDados: React.Dispatch<React.SetStateAction<Medidas>>;
@@ -74,13 +77,12 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
 
             <div className='bg-gray-50 border border-zinc-300 shadow rounded-xl overflow-hidden'>
                 <TabGroup >
-                    <TabList className="flex flex-col md:flex-row justify-center mb-6 pt-6">
-                        {['Comprimento Parte Superior', 'Diametro Parte Superior',
-                            'Comprimento Parte Inferior', 'Diametro Parte Inferior'].map((tab) => (
+                    <TabList className="flex flex-col md:flex-row justify-center mb-6  py-1 rounded-md bg-neutral-900">
+                        {abas.map((tab) => (
                                 <Tab
                                     key={tab}
                                     className={({ selected }) =>
-                                        `px-4 py-2 text-sm font-medium cursor-pointer ${selected ? 'bg-white text-black' : 'bg-gray-100 text-gray-800'}`
+                                        `px-4 py-2 text-sm font-medium rounded-sm bg-neutral-900 cursor-pointer ${selected ? 'bg-white text-black' : ' text-white'}`
                                     }
                                 >
                                     {tab}
@@ -89,78 +91,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                     </TabList>
 
                     <TabPanels className={'pb-4'}>
-                        {/*Comprimento Superior*/}
-                        <TabPanel>
-                            <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6">
-                                {/*Tela Pequena*/}
-                                <div className='block md:hidden'>
-                                    <div className="flex justify-center items-center">
-                                        <div className="w-full max-h-auto overflow-hidden border rounded-lg flex items-center justify-center text-gray-400">
-                                            <img src={Superior} alt="Mannequim" />
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div className="space-y-4">
-                                    <Input
-                                        label="Busto Frente"
-                                        name="compBustoFrente"
-                                        value={dados.compBustoFrente} // Vinculando ao estado
-                                        unit="cm"
-                                        onChange={(e) => handleInputChange(e, "compBustoFrente")} // Atualizando o estado
-                                        instrucao='Meça em linha reta da lateral de uma axila até a lateral da outra, passando pelo centro do busto (peito).'
-                                    />
-
-                                    <Input
-                                        label="Ombro"
-                                        name="compOmbro"
-                                        value={dados.compOmbro} // Vinculando ao estado
-                                        unit="cm"
-                                        onChange={(e) => handleInputChange(e, "compOmbro")} // Atualizando o estado
-                                        instrucao='Meça da base do pescoço até a ponta do ombro (onde o braço começa).'
-                                    />
-
-                                    <Input
-                                        label="Comprimento do Tronco"
-                                        name="compAlturaTronco"
-                                        value={dados.compAlturaTronco} // Vinculando ao estado
-                                        unit="cm"
-                                        onChange={(e) => handleInputChange(e, "compAlturaTronco")} // Atualizando o estado
-                                        instrucao='Meça do ombro (ponto mais alto) até a linha da cintura, passando pelo meio do peito.'
-                                    />
-                                </div>
-
-                                {/*Tela Media*/}
-                                <div className='hidden md:block'>
-                                    <div className="flex justify-center items-center">
-                                        <div className="w-full min-h-80 border overflow-hidden rounded-lg flex items-center justify-center text-gray-400">
-                                            <img src={Superior} alt="Mannequim" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="space-y-4">
-                                    <Input
-                                        label="Comprimento do Busto"
-                                        name="compBusto"
-                                        value={dados.compBusto} // Vinculando ao estado
-                                        unit="cm"
-                                        onChange={(e) => handleInputChange(e, "compBusto")} // Atualizando o estado
-                                        instrucao='Meça do ombro (ponto mais alto) até a parte mais saliente do busto (geralmente o mamilo).'
-                                    />
-
-                                    <Input
-                                        label="Comprimento do Braço"
-                                        name="compBraco"
-                                        value={dados.compBraco} // Vinculando ao estado
-                                        unit="cm"
-                                        onChange={(e) => handleInputChange(e, "compBraco")} // Atualizando o estado
-                                        instrucao='Meça do ombro até o osso do pulso, com o braço levemente dobrado.'
-                                    />
-                                </div>
-                            </div>
-
-                        </TabPanel>
                         {/*Circunferencia Superior*/}
                         <TabPanel>
                             <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6">
@@ -278,6 +209,80 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                             </div>
 
                         </TabPanel>
+
+                        {/*Comprimento Superior*/}
+                        <TabPanel>
+                            <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6">
+                                {/*Tela Pequena*/}
+                                <div className='block md:hidden'>
+                                    <div className="flex justify-center items-center">
+                                        <div className="w-full max-h-auto overflow-hidden border rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Superior} alt="Mannequim" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <Input
+                                        label="Busto Frente"
+                                        name="compBustoFrente"
+                                        value={dados.compBustoFrente} // Vinculando ao estado
+                                        unit="cm"
+                                        onChange={(e) => handleInputChange(e, "compBustoFrente")} // Atualizando o estado
+                                        instrucao='Meça em linha reta da lateral de uma axila até a lateral da outra, passando pelo centro do busto (peito).'
+                                    />
+
+                                    <Input
+                                        label="Ombro"
+                                        name="compOmbro"
+                                        value={dados.compOmbro} // Vinculando ao estado
+                                        unit="cm"
+                                        onChange={(e) => handleInputChange(e, "compOmbro")} // Atualizando o estado
+                                        instrucao='Meça da base do pescoço até a ponta do ombro (onde o braço começa).'
+                                    />
+
+                                    <Input
+                                        label="Comprimento do Tronco"
+                                        name="compAlturaTronco"
+                                        value={dados.compAlturaTronco} // Vinculando ao estado
+                                        unit="cm"
+                                        onChange={(e) => handleInputChange(e, "compAlturaTronco")} // Atualizando o estado
+                                        instrucao='Meça do ombro (ponto mais alto) até a linha da cintura, passando pelo meio do peito.'
+                                    />
+                                </div>
+
+                                {/*Tela Media*/}
+                                <div className='hidden md:block'>
+                                    <div className="flex justify-center items-center">
+                                        <div className="w-full min-h-80 border overflow-hidden rounded-lg flex items-center justify-center text-gray-400">
+                                            <img src={Superior} alt="Mannequim" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <Input
+                                        label="Comprimento do Busto"
+                                        name="compBusto"
+                                        value={dados.compBusto} // Vinculando ao estado
+                                        unit="cm"
+                                        onChange={(e) => handleInputChange(e, "compBusto")} // Atualizando o estado
+                                        instrucao='Meça do ombro (ponto mais alto) até a parte mais saliente do busto (geralmente o mamilo).'
+                                    />
+
+                                    <Input
+                                        label="Comprimento do Braço"
+                                        name="compBraco"
+                                        value={dados.compBraco} // Vinculando ao estado
+                                        unit="cm"
+                                        onChange={(e) => handleInputChange(e, "compBraco")} // Atualizando o estado
+                                        instrucao='Meça do ombro até o osso do pulso, com o braço levemente dobrado.'
+                                    />
+                                </div>
+                            </div>
+
+                        </TabPanel>
+                        
                         {/*Comprimento Inferior*/}
                         <TabPanel>
                             <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6 ">
