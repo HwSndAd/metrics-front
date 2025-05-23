@@ -13,9 +13,9 @@ export const cadastrarUsuario = async (
     setDados(resposta.data);
 };
 {/*Adicionado method de busca por filtragem*/}
-export const filtro = async (url: string, setDados: Function, header: Object) => {
+export const filtro = async (url: string, header: Object) => {
     const resposta = await api.get(url, header);
-    setDados(resposta.data);
+    return resposta.data;
 };
 
 export const login = async (url: string, dados: Object, setDados: Function) => {

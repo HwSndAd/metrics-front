@@ -29,8 +29,13 @@ function ListUsuario({ usuarios, onSelecionarUsuario }: ListUsuarioProps) {
     const [listaUsuarios, setListaUsuarios] = useState<Medidas[]>(usuarios);
 
     useEffect(() => {
-        setListaUsuarios(usuarios);
-    },[]);
+        if(busca === "" &&
+        filtroStatus === "Todos" &&
+        eventoFiltro === "" &&
+        instituicaoFiltro === ""){
+            setListaUsuarios(usuarios);
+        }
+    },[usuarios, busca, filtroStatus, eventoFiltro, instituicaoFiltro]);
 
     // filtro simples de nome + status
     const usuariosFiltrados = listaUsuarios.filter((u) => {
@@ -47,12 +52,12 @@ function ListUsuario({ usuarios, onSelecionarUsuario }: ListUsuarioProps) {
     };
 
     const handleFiltroComposto = async () => {
-        console.log("Botão de filtro clicado!"); // DEBUG
         const url = `/medidas/${encodeURIComponent(eventoFiltro)}/${encodeURIComponent(instituicaoFiltro)}`;
         try {
-            await filtro(url, setListaUsuarios, {
+            const dados = await filtro(url, {
                 headers: { Authorization: token }
             });
+            setListaUsuarios(dados);
             setMostrarFiltro(false);
         } catch (error: any) {
             if (error.toString().includes('403')) {
