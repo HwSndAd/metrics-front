@@ -28,6 +28,10 @@ function ListUsuario({ usuarios, onSelecionarUsuario }: ListUsuarioProps) {
     // lista que será renderizada
     const [listaUsuarios, setListaUsuarios] = useState<Medidas[]>(usuarios);
 
+    useEffect(() => {
+        setListaUsuarios(usuarios);
+    });
+
     // filtro simples de nome + status
     const usuariosFiltrados = listaUsuarios.filter((u) => {
         const nomeMatch = u.nome.toLowerCase().includes(busca.toLowerCase());
