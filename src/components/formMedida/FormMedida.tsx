@@ -73,21 +73,32 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                         onChange={(e) => handleInputChange(e, "escola")} // Atualiza o estado
                     />
                 </div>
+
+                <div>
+                    <h3 className="font-medium">Evento</h3>
+                    <input
+                        className="border bg-white font-light tracking-tighter border-gray-400 p-1 rounded-lg text-md"
+                        type="text"
+                        placeholder="Nome do evento"
+                        value={dados.evento} // Vincula o valor do input ao estado
+                        onChange={(e) => handleInputChange(e, "evento")} // Atualiza o estado
+                    />
+                </div>
             </div>
 
             <div className='bg-gray-50 border border-zinc-300 shadow rounded-xl overflow-hidden'>
                 <TabGroup >
                     <TabList className="flex flex-col md:flex-row justify-center mb-6  py-1 rounded-md bg-neutral-900">
                         {abas.map((tab) => (
-                                <Tab
-                                    key={tab}
-                                    className={({ selected }) =>
-                                        `px-4 py-2 text-sm font-medium rounded-sm bg-neutral-900 cursor-pointer ${selected ? 'bg-white text-black' : ' text-white'}`
-                                    }
-                                >
-                                    {tab}
-                                </Tab>
-                            ))}
+                            <Tab
+                                key={tab}
+                                className={({ selected }) =>
+                                    `px-4 py-2 text-sm font-medium rounded-sm bg-neutral-900 cursor-pointer ${selected ? 'bg-white text-black' : ' text-white'}`
+                                }
+                            >
+                                {tab}
+                            </Tab>
+                        ))}
                     </TabList>
 
                     <TabPanels className={'pb-4'}>
@@ -282,7 +293,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                             </div>
 
                         </TabPanel>
-                        
+
                         {/*Comprimento Inferior*/}
                         <TabPanel>
                             <div className="grid md:grid-cols-3 gap-6 bg-gray-50 p-6 ">

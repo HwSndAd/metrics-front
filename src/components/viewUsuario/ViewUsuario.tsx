@@ -28,7 +28,7 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
         return <div className="bg-white p-4 rounded shadow">Selecione um usuário para visualizar os dados.</div>;
     }
     const { usuario: authUsuario } = useContext(AuthContext);      // <-- puxa usuário autenticado
-    const token = authUsuario?.token; 
+    const token = authUsuario?.token;
 
     const [usuarioStatus, setUsuarioStatus] = useState(usuario.status);
 
@@ -69,7 +69,11 @@ function ViewUsuario({ usuario, setUsuario, atualizarListaUsuarios }: ViewUsuari
             <div className="flex justify-between border-b border-zinc-300 px-4 pb-4 print:hidden">
                 <div>
                     <h1 className="text-2xl font-semibold text-zinc-800">{usuario.nome}</h1>
-                    <h1 className="text-md text-zinc-800">{usuario.escola}</h1>
+                    <div className='flex gap-1'>
+                        <h1 className="text-md text-zinc-800">{usuario.escola}</h1>
+                        <p>|</p>
+                        <h1 className="text-md text-zinc-800">{usuario.evento}</h1>
+                    </div>
                 </div>
                 <div className='flex justify-items-end items-end'>
                     <p

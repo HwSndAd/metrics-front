@@ -3,6 +3,9 @@ export default interface Medidas {
     dataAtual?: string; // ou undefined
     token?: string; // importante para passar no header
     nome: string;
+
+    evento: string; //add
+
     altura: number; //Adicionado
     status: string;
 

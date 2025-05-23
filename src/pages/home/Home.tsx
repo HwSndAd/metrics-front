@@ -12,6 +12,7 @@ function Home() {
         nome: '',
         manequim: '',
         escola: '',
+        evento: '',
         dataAtual: '', // ou undefined
         status: 'Recebido', // ou undefined
         altura: 0, //adicionado
