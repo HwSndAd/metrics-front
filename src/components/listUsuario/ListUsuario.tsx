@@ -30,7 +30,7 @@ function ListUsuario({ usuarios, onSelecionarUsuario }: ListUsuarioProps) {
 
     useEffect(() => {
         setListaUsuarios(usuarios);
-    });
+    },[]);
 
     // filtro simples de nome + status
     const usuariosFiltrados = listaUsuarios.filter((u) => {
