@@ -12,6 +12,11 @@ export const cadastrarUsuario = async (
     const resposta = await api.post(url, dados);
     setDados(resposta.data);
 };
+{/*Adicionado method de busca por filtragem*/}
+export const filtro = async (url: string, setDados: Function, header: Object) => {
+    const resposta = await api.get(url, header);
+    setDados(resposta.data);
+};
 
 export const login = async (url: string, dados: Object, setDados: Function) => {
     const resposta = await api.post(url, dados);

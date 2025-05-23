@@ -18,7 +18,8 @@ function EditarUsuario() {
         nome: usuario?.nome ?? '',
         escola: usuario?.escola ?? '',
         manequim: usuario?.manequim ?? '',
-        altura: usuario?.altura ?? '', //add
+        altura: usuario?.altura ?? '', 
+        evento: usuario?.evento ?? '', //add
         compBustoFrente: usuario?.compBustoFrente ?? 0,
         compOmbro: usuario?.compOmbro ?? 0,
         compAlturaTronco: usuario?.compAlturaTronco ?? 0,
@@ -109,6 +110,14 @@ function EditarUsuario() {
                             type="text"
                             value={form.escola}
                             onChange={(e) => setForm({ ...form, escola: e.target.value })}
+                            className="w-full border border-zinc-300 bg-white rounded-lg p-2"
+                        />
+                        
+                        <h2 className="text-lg font-semibold mt-4 mb-2">Evento</h2>
+                        <input
+                            type="text"
+                            value={form.evento}
+                            onChange={(e) => setForm({ ...form, evento: e.target.value })}
                             className="w-full border border-zinc-300 bg-white rounded-lg p-2"
                         />
                     </div>

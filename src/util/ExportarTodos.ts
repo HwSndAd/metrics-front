@@ -4,6 +4,8 @@ const headerMap: { [key: string]: string } = {
     manequim: "Man.",
     altura: "Alt.", //add
 
+    evento: "Evento",
+
     compBustoFrente: "Busto Fr.",
     compOmbro: "Ombro",
     compAlturaTronco: "Alt Tronco",

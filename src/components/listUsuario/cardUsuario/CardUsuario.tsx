@@ -1,11 +1,12 @@
 interface CardUsuarioProps {
     nome: string
     escola: string
+    evento: string
     data: string
     status?: string
 }
 
-function CardUsuario({ nome, escola, data, status }: CardUsuarioProps) {
+function CardUsuario({ nome, escola, evento, data, status }: CardUsuarioProps) {
 
     const bgColor = status === 'Concluído' ? 'bg-green-100' :
                     'bg-yellow-100'; // Qualquer outro estado será vermelho claro
@@ -16,7 +17,7 @@ function CardUsuario({ nome, escola, data, status }: CardUsuarioProps) {
             <div className="flex flex-col">
                 <span className="text-sm font-bold text-gray-800">{nome}</span>
                 <span className="text-sm font-light text-gray-800">{escola}</span>
-
+                <span className="text-sm font-light text-gray-800">{evento}</span>
             </div>
 
             <span className="text-sm font-medium bg-white border border-zinc-300 px-1.5 

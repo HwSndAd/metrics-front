@@ -31,7 +31,14 @@ class ComponentToPrint extends React.Component<{ usuario: Medidas }> {
                     type="text"
                     value={usuario.escola}
                     readOnly
-                    className="absolute border-b border-dashed top-[55px] left-[330px] w-[335px] text-sm"
+                    className="absolute border-b border-dashed top-[55px] left-[300px] w-[180] text-sm"
+                />
+
+                <input
+                    type="text"
+                    value={usuario.evento}
+                    readOnly
+                    className="absolute border-b border-dashed top-[55px] left-[480px] w-[190px] text-sm"
                 />
                 <input
                     type="text"
@@ -177,7 +184,7 @@ class ComponentToPrint extends React.Component<{ usuario: Medidas }> {
                     type="text"
                     value={usuario.comentario ?? ''}
                     readOnly
-                    className="absolute border bottom-[7px] right-[7px] w-[780px] px-2 py-1"
+                    className="absolute border bottom-[7px] right-[7px] w-[780px] px-2 pt-1"
                 />
             </div>
         );
