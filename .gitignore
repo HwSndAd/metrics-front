@@ -12,6 +12,8 @@ node_modules
 dist
 dist-ssr
 *.local
+#Fotos medidas
+/public/src/passoApasso/
 
 # Editor directories and files
 .vscode/*

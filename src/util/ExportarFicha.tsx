@@ -78,7 +78,7 @@ class ComponentToPrint extends React.Component<{ usuario: Medidas }> {
                 />
                 <input
                     type="text"
-                    value={usuario.circBiceps ?? ''} 
+                    value={usuario.circBiceps ?? ''}
                     readOnly
                     className="absolute top-[320px] left-[535px] w-[120px] px-2 py-1"
                 />
@@ -193,11 +193,20 @@ class ComponentToPrint extends React.Component<{ usuario: Medidas }> {
 
 export default function ExportarFicha() {
     const location = useLocation();
-    const state = location.state as { usuario?: Medidas } | undefined;
-    const usuario = state?.usuario;
+    const state = location.state as {
+        usuario?: Medidas;
+        usuarios?: Medidas[];
+    } | undefined;
 
-    if (!usuario) {
-        return <p className='text-2xl text-center font-bold pt-6'>Nenhum usuário selecionado <br /> para  Visualização.</p>;
+    const usuario = state?.usuario;
+    const usuarios = state?.usuarios;
+
+    if (!usuario && !usuarios) {
+        return (
+            <p className='text-2xl text-center font-bold pt-6'>
+                Nenhum usuário selecionado <br /> para visualização.
+            </p>
+        );
     }
 
     const componentRef = useRef<HTMLDivElement>(null);
@@ -215,8 +224,14 @@ export default function ExportarFicha() {
                 <Printer size={32} />
             </button>
 
-            <div className='pb-6' ref={componentRef}>
-                <ComponentToPrint usuario={usuario} />
+            <div className='pb-6 print:pb-0' ref={componentRef}>
+                {usuarios
+                    ? usuarios.map((u, index) => (
+                        <div key={index} className='mb-10 break-after-page'>
+                            <ComponentToPrint usuario={u} />
+                        </div>
+                    ))
+                    : <ComponentToPrint usuario={usuario!} />}
             </div>
         </div>
     );
