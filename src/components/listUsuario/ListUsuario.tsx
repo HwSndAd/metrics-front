@@ -1,10 +1,12 @@
-import { MagnifyingGlass, Funnel, CaretDown, Building, CoatHanger, Broom } from "@phosphor-icons/react";
+import { MagnifyingGlass, Funnel, CaretDown, Building, CoatHanger, Broom, DownloadSimple } from "@phosphor-icons/react";
 import CardUsuario from "./cardUsuario/CardUsuario";
 import Medidas from "../../models/Medidas";
 import { useState, useEffect, useContext } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { filtro } from "../../service/service"; // ajuste o path se necessário
 import { AuthContext } from "../../contexts/AuthContext";
+import ExportarFicha from "../../util/ExportarFicha";
+import { useNavigate } from "react-router-dom";
 
 interface ListUsuarioProps {
     usuarios: Medidas[];
@@ -18,6 +20,8 @@ function ListUsuario({ usuarios, onSelecionarUsuario }: ListUsuarioProps) {
     const [mostrarFiltro, setMostrarFiltro] = useState(false);
     const [filtroStatus, setFiltroStatus] = useState<"Todos" | "Recebido" | "Concluído">("Todos");
 
+    const navigate = useNavigate();
+
     const { usuario, handleLogout } = useContext(AuthContext);
     const token = usuario.token;
 
@@ -29,13 +33,13 @@ function ListUsuario({ usuarios, onSelecionarUsuario }: ListUsuarioProps) {
     const [listaUsuarios, setListaUsuarios] = useState<Medidas[]>(usuarios);
 
     useEffect(() => {
-        if(busca === "" &&
-        filtroStatus === "Todos" &&
-        eventoFiltro === "" &&
-        instituicaoFiltro === ""){
+        if (busca === "" &&
+            filtroStatus === "Todos" &&
+            eventoFiltro === "" &&
+            instituicaoFiltro === "") {
             setListaUsuarios(usuarios);
         }
-    },[usuarios, busca, filtroStatus, eventoFiltro, instituicaoFiltro]);
+    }, [usuarios, busca, filtroStatus, eventoFiltro, instituicaoFiltro]);
 
     // filtro simples de nome + status
     const usuariosFiltrados = listaUsuarios.filter((u) => {
@@ -50,6 +54,7 @@ function ListUsuario({ usuarios, onSelecionarUsuario }: ListUsuarioProps) {
         setListaUsuarios(usuarios); // volta para os dados originais
         setMostrarFiltro(false);
     };
+
 
     const handleFiltroComposto = async () => {
         const url = `/medidas/${encodeURIComponent(eventoFiltro)}/${encodeURIComponent(instituicaoFiltro)}`;
@@ -142,7 +147,18 @@ function ListUsuario({ usuarios, onSelecionarUsuario }: ListUsuarioProps) {
                                 className="bg-transparent outline-none w-full text-md"
                             />
                         </div>
-                        <div className="flex justify-end w-full">
+                        <div className="flex gap-1 justify-between w-full">
+                            <button
+                                onClick={() =>
+                                    navigate('/view', {
+                                        state: { usuarios: usuariosFiltrados }
+                                    })
+                                }
+                                className="flex items-center justify-center gap-1 border border-zinc-300 rounded-md px-2 py-1 hover:scale-102 hover:bg-zinc-50"
+                            >
+                                <DownloadSimple size={18} />
+                                Exportar
+                            </button>
                             <button
                                 onClick={limparFiltros}
                                 className="flex items-center justify-center gap-1 border border-zinc-300 rounded-md px-2 py-1 hover:scale-102 hover:bg-zinc-50"
@@ -150,6 +166,8 @@ function ListUsuario({ usuarios, onSelecionarUsuario }: ListUsuarioProps) {
                                 <Broom size={16} />
                                 Limpar
                             </button>
+                        </div>
+                        <div className="flex justify-end w-full">
                             <button
                                 onClick={handleFiltroComposto}
                                 className="flex items-center justify-center gap-1 border border-zinc-300 rounded-md px-2 py-1 hover:scale-102 hover:bg-zinc-50"

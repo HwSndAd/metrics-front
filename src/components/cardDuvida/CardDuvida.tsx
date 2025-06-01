@@ -4,17 +4,18 @@ import Mannequim from '../../assets/img/Mannequim.png';
 interface CardDuvidaProps {
     campo: string;
     passoApasso?: string;
+    foto?: string;
     onClose: () => void;
 }
 
-function CardDuvida( { passoApasso,campo,onClose }: CardDuvidaProps) {
+function CardDuvida( { passoApasso,campo,foto,onClose }: CardDuvidaProps) {
     return (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
             <div className="relative bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-6 md:p-8 flex flex-col gap-6">
                 
                 {/* Imagem */}
                 <div className="flex items-center justify-center">
-                    <img src={Mannequim} alt="Mannequim" className="object-contain h-52 md:h-64 rounded-xl" />
+                    <img src={`src/passoApasso/${foto}.jpg`} alt={`Imagem instrutiva ${foto}`} className="object-contain h-52 md:h-64 rounded-xl" />
                 </div>
 
                 {/* Texto */}

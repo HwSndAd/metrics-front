@@ -6,12 +6,13 @@ interface InputProps {
     name: string
     label: string
     value: number | undefined
+    regiao: string
     instrucao?: string
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
     unit?: string
 }
 
-function Input({ name, instrucao, label, value, onChange, unit }: InputProps) {
+function Input({ name, instrucao, label, value, regiao, onChange, unit }: InputProps) {
     {/*Controle do Pop-Up*/ }
     const [isCardOpen, setIsCardOpen] = useState(false);
 
@@ -39,7 +40,7 @@ function Input({ name, instrucao, label, value, onChange, unit }: InputProps) {
                 {unit && <span className="text-xs text-gray-500">{unit}</span>}
             </div>
             {/* Pop-up Card */}
-            {isCardOpen && <CardDuvida campo={label} passoApasso={instrucao} onClose={() => setIsCardOpen(false)} />}
+            {isCardOpen && <CardDuvida campo={label} foto={regiao} passoApasso={instrucao} onClose={() => setIsCardOpen(false)} />}
         </div>
     )
 }

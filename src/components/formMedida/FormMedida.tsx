@@ -118,6 +118,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                 <div className="space-y-4">
                                     <Input
                                         label="Circunferencia do Pescoço"
+                                        regiao='circPescoco'
                                         name="circPescoco"
                                         value={dados.circPescoco} // Vinculando ao estado
                                         unit="cm"
@@ -129,6 +130,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Circunferencia Busto"
                                         name="circBusto"
+                                        regiao='circBusto'
                                         value={dados.circBusto} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circBusto")} // Atualizando o estado
@@ -138,6 +140,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
 
                                     <Input
                                         label="Circunferencia Cintura"
+                                        regiao='circCintura'
                                         name="circCintura"
                                         value={dados.circCintura} // Vinculando ao estado
                                         unit="cm"
@@ -148,6 +151,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
 
                                     <Input
                                         label="Circunferencia da Cava"
+                                        regiao='cava'
                                         name="circCava"
                                         value={dados.circCava} // Vinculando ao estado
                                         unit="cm"
@@ -159,6 +163,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Circunferencia Biceps"
                                         name="circBiceps"
+                                        regiao='circBiceps'
                                         value={dados.circBiceps} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circBiceps")} // Atualizando o estado
@@ -180,6 +185,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Circunferencia Punho Fechado"
                                         name="circPunhoFechado"
+                                        regiao='punhoFechado'
                                         value={dados.circPunhoFechado} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circPunhoFechado")} // Atualizando o estado
@@ -190,6 +196,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Circunferencia com Punho Abertura"
                                         name="circPunhoAberto"
+                                        regiao='circPunho'
                                         value={dados.circPunhoAbertura} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circPunhoAbertura")} // Atualizando o estado
@@ -200,6 +207,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Circunferencia cintura Média"
                                         name="circCinturaMedia"
+                                        regiao='x'
                                         value={dados.circCinturaMedia} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circCinturaMedia")} // Atualizando o estado
@@ -210,6 +218,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Circunferencia cintura Baixa"
                                         name="circCinturaBaixa"
+                                        regiao='x'
                                         value={dados.circCinturaBaixa} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circCinturaBaixa")} // Atualizando o estado
@@ -237,6 +246,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Busto Frente"
                                         name="compBustoFrente"
+                                        regiao='frenteBusto'
                                         value={dados.compBustoFrente} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compBustoFrente")} // Atualizando o estado
@@ -246,6 +256,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Ombro"
                                         name="compOmbro"
+                                        regiao='ombro'
                                         value={dados.compOmbro} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compOmbro")} // Atualizando o estado
@@ -255,6 +266,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Comprimento do Tronco"
                                         name="compAlturaTronco"
+                                        regiao='altTronco'
                                         value={dados.compAlturaTronco} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compAlturaTronco")} // Atualizando o estado
@@ -275,6 +287,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Comprimento do Busto"
                                         name="compBusto"
+                                        regiao='altBusto'
                                         value={dados.compBusto} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compBusto")} // Atualizando o estado
@@ -284,6 +297,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Comprimento do Braço"
                                         name="compBraco"
+                                        regiao='compBraco'
                                         value={dados.compBraco} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compBraco")} // Atualizando o estado
@@ -310,6 +324,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Altura até Meio da Coxa"
                                         name="compMeioCoxa"
+                                        regiao='meioCoxa'
                                         value={dados.compMeioCoxa} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compMeioCoxa")} // Atualizando o estado
@@ -320,6 +335,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Altura até Joelho"
                                         name="compJoelho"
+                                        regiao='compJoelho'
                                         value={dados.compJoelho} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compJoelho")} // Atualizando o estado
@@ -340,6 +356,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Altura até Panturrilha"
                                         name="compPanturrilha"
+                                        regiao='panturrilha'
                                         value={dados.compPanturrilha} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compPanturrilha")} // Atualizando o estado
@@ -349,6 +366,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Altura Total Perna"
                                         name="compTotalPerna"
+                                        regiao='tornozelo'
                                         value={dados.compTotalPerna} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "compTotalPerna")} // Atualizando o estado
@@ -375,6 +393,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Circunferencia Coxa"
                                         name="circCoxa"
+                                        regiao='circCoxa'
                                         value={dados.circCoxa} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circCoxa")} // Atualizando o estado
@@ -385,6 +404,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Circunferencia Joelho"
                                         name="circJoelho"
+                                        regiao='circJoelho'
                                         value={dados.circJoelho} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circJoelho")} // Atualizando o estado
@@ -394,6 +414,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Circunferencia Panturrilha"
                                         name="circPanturrilha"
+                                        regiao='circPanturrilha'
                                         value={dados.circPanturrilha} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circPanturrilha")} // Atualizando o estado
@@ -415,6 +436,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Circunferencia Quadril"
                                         name="circQuadril"
+                                        regiao='circQuadril'
                                         value={dados.circQuadril} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circQuadril")} // Atualizando o estado
@@ -424,6 +446,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Circunferencia Tornozelo"
                                         name="circTornozelo"
+                                        regiao='circTornozelo'
                                         value={dados.circTornozelo} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "circTornozelo")} // Atualizando o estado
@@ -432,6 +455,7 @@ function FormMedida({ dados, setDados }: FormMedidasProps) {
                                     <Input
                                         label="Gancho"
                                         name="gancho"
+                                        regiao='gancho'
                                         value={dados.gancho} // Vinculando ao estado
                                         unit="cm"
                                         onChange={(e) => handleInputChange(e, "gancho")} // Atualizando o estado
