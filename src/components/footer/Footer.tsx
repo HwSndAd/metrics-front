@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
     return (
-        <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-6">
+        <footer className="bg-neutral-900 border-t border-gray-800 py-6">
             <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
 
                 {/* Admin Login */}
-                <div className="text-center md:text-left">
+                <div className="text-center md:text-left hover:scale-102">
                     <Link
                         to="/admin"
-                        className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors"
+                        className="text-sm font-medium text-white transition-colors"
                     >
                         Área do Administrador
                     </Link>
@@ -18,7 +18,7 @@ function Footer() {
 
                 {/* Instagram Button */}
                 <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-500 dark:text-gray-500">
+                    <span className="text-sm text-white">
                         Siga no Instagram:
                     </span>
                     <Link

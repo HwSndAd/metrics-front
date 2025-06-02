@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom"
-import Icon from '../../assets/img/IconImg.png'
-import IconText from '../../assets/img/LogoText.png'
+import Icon from '../../assets/img/IconBrancoBgPreto.png'
+import IconText from '../../assets/img/TextBrancoBgPreto.png'
 
 function NavBar() {
     return (
-        <div className='shadow-md print:hidden'>
+        <div className='shadow-md print:hidden bg-neutral-900'>
             <div className='flex items-center justify-center overflow-hidden container mx-auto px-6 py-2 '>
                 <Link to={'/'}>
                     <div className='flex items-center gap-3'>
-                        <div className="h-26 flex items-center justify-center overflow-hidden">
+                        <div className="h-27 flex items-center justify-center overflow-hidden">
                             <img src={Icon} alt="Logo" className="object-contain w-full h-full" />
                         </div>
-                        <div className="h-12 flex items-center justify-center overflow-hidden">
+                        <div className="h-13 flex items-center justify-center overflow-hidden">
                             <img src={IconText} alt="Miriane Sa Figurinos" className="object-contain w-full h-full" />
                         </div>
                     </div>
