@@ -9,7 +9,7 @@ import Superior from '../../assets/img/Superior.png'
 import InferiorComp from '../../assets/img/Inferior_Comprimento.png'
 import InferiorCirc from '../../assets/img/Inferior_Circ.png'
 
-const abas = ['Comprimento Parte Superior', 'Diametro Parte Superior',
+const abas = ['Diametro Parte Superior', 'Comprimento Parte Superior',
     'Comprimento Parte Inferior', 'Diametro Parte Inferior'];
 
 interface FormMedidasProps {
